@@ -1,16 +1,16 @@
 # submit_dataproc_serverless_job_using_airflow
 <br>
 
-Absolutely! Here's the formatted content, ready for a GitHub README.md file:
+
 
 ```markdown
-## DataprocCreateBatchOperator
+# DataprocCreateBatchOperator
 
 The `DataprocCreateBatchOperator` is an Apache Airflow operator designed to streamline the creation of batch workloads within Google Cloud Dataproc.
 
-**Class Definition**
+## Class Definition
 
-```
+```python
 class airflow.providers.google.cloud.operators.dataproc.DataprocCreateBatchOperator(
     *,
     region=None,
@@ -31,26 +31,26 @@ class airflow.providers.google.cloud.operators.dataproc.DataprocCreateBatchOpera
 )
 ```
 
-**Base Class**
+## Base Class
 
 `airflow.providers.google.cloud.operators.cloud_base.GoogleCloudBaseOperator`
 
-**Key Parameters**
+## Key Parameters
 
-| Parameter             | Description                                                                                                           | Required |
-|-----------------------|-------------------------------------------------------------------------------------------------------------------|----------|
-| `project_id` (str)    | The Google Cloud project ID associated with the cluster. (templated)                                              | Optional |
-| `region` (str)        | The Cloud Dataproc region to handle the request. (templated)                                                       | Yes      |
-| `batch` (dict/object) | The batch configuration (either a dictionary or a `google.cloud.dataproc_v1.Batch` object). (templated)              | Yes      |
-| `batch_id` (str)      | A unique ID for the batch (4-63 characters, lowercase, numbers, hyphens). (templated)                               | Yes      |
-| `request_id` (str)    | A unique ID for the request (optional).                                                                          | No       |
-| `asynchronous` (bool) | If True, returns immediately after submitting the batch creation request, enabling asynchronous monitoring.     | No       |
+| Parameter               | Description                                                                                             | Required |
+|-------------------------|---------------------------------------------------------------------------------------------------------|----------|
+| `project_id` (str)      | The Google Cloud project ID associated with the cluster. (templated)                                    | Optional |
+| `region` (str)          | The Cloud Dataproc region to handle the request. (templated)                                            | Yes      |
+| `batch` (dict/object)   | The batch configuration (either a dictionary or a `google.cloud.dataproc_v1.Batch` object). (templated) | Yes      |
+| `batch_id` (str)        | A unique ID for the batch (4-63 characters, lowercase, numbers, hyphens). (templated)                    | Yes      |
+| `request_id` (str)      | A unique ID for the request (optional).                                                                 | No       |
+| `asynchronous` (bool)   | If True, returns immediately after submitting the batch creation request, enabling asynchronous monitoring. | No       |
 
-**Additional Parameters**
+## Additional Parameters
 
 Refer to the official documentation for details on parameters like `retry`, `timeout`, `metadata`, `gcp_conn_id`, `impersonation_chain`, `result_retry`, `deferrable`, and `polling_interval_seconds`.
 
-**Example Usage**
+## Example Usage
 
 ```python
 from airflow import DAG
@@ -63,9 +63,9 @@ with DAG(...) as dag:
     )
 ```
 
-**Notes**
+## Notes
 
-* For in-depth usage and customization options, consult the [Apache Airflow documentation](https://airflow.apache.org/).
+- The operator leverages the Google Cloud Python client library. Make sure you have the necessary dependencies installed.
+- For in-depth usage and customization options, consult the [Apache Airflow documentation](https://airflow.apache.org/).
 ```
-
 
