@@ -1,36 +1,71 @@
 # submit_dataproc_serverless_job_using_airflow
 <br>
 
-classairflow.providers.google.cloud.operators.dataproc.DataprocCreateBatchOperator(*, region=None, project_id=PROVIDE_PROJECT_ID, batch, batch_id, request_id=None, retry=DEFAULT, timeout=None, metadata=(), gcp_conn_id='google_cloud_default', impersonation_chain=None, result_retry=DEFAULT, asynchronous=False, deferrable=conf.getboolean('operators', 'default_deferrable', fallback=False), polling_interval_seconds=5, **kwargs)[source]
-Bases: airflow.providers.google.cloud.operators.cloud_base.GoogleCloudBaseOperator
+Absolutely! Here's the formatted content, ready for a GitHub README.md file:
 
-Create a batch workload.
+```markdown
+## DataprocCreateBatchOperator
 
-Parameters
-project_id (str) – Optional. The ID of the Google Cloud project that the cluster belongs to. (templated)
+The `DataprocCreateBatchOperator` is an Apache Airflow operator designed to streamline the creation of batch workloads within Google Cloud Dataproc.
 
-region (str | None) – Required. The Cloud Dataproc region in which to handle the request. (templated)
+**Class Definition**
 
-batch (dict | google.cloud.dataproc_v1.Batch) – Required. The batch to create. (templated)
+```
+class airflow.providers.google.cloud.operators.dataproc.DataprocCreateBatchOperator(
+    *,
+    region=None,
+    project_id=PROVIDE_PROJECT_ID,
+    batch,
+    batch_id,
+    request_id=None,
+    retry=DEFAULT,
+    timeout=None,
+    metadata=(),
+    gcp_conn_id='google_cloud_default',
+    impersonation_chain=None,
+    result_retry=DEFAULT,
+    asynchronous=False,
+    deferrable=conf.getboolean('operators', 'default_deferrable', fallback=False),
+    polling_interval_seconds=5,
+    **kwargs
+)
+```
 
-batch_id (str) – Required. The ID to use for the batch, which will become the final component of the batch’s resource name. This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/. (templated)
+**Base Class**
 
-request_id (str | None) – Optional. A unique id used to identify the request. If the server receives two CreateBatchRequest requests with the same id, then the second request will be ignored and the first google.longrunning.Operation created and stored in the backend is returned.
+`airflow.providers.google.cloud.operators.cloud_base.GoogleCloudBaseOperator`
 
-retry (google.api_core.retry.Retry | google.api_core.gapic_v1.method._MethodDefault) – A retry object used to retry requests. If None is specified, requests will not be retried.
+**Key Parameters**
 
-result_retry (google.api_core.retry_async.AsyncRetry | google.api_core.gapic_v1.method._MethodDefault) – Result retry object used to retry requests. Is used to decrease delay between executing chained tasks in a DAG by specifying exact amount of seconds for executing.
+| Parameter             | Description                                                                                                           | Required |
+|-----------------------|-------------------------------------------------------------------------------------------------------------------|----------|
+| `project_id` (str)    | The Google Cloud project ID associated with the cluster. (templated)                                              | Optional |
+| `region` (str)        | The Cloud Dataproc region to handle the request. (templated)                                                       | Yes      |
+| `batch` (dict/object) | The batch configuration (either a dictionary or a `google.cloud.dataproc_v1.Batch` object). (templated)              | Yes      |
+| `batch_id` (str)      | A unique ID for the batch (4-63 characters, lowercase, numbers, hyphens). (templated)                               | Yes      |
+| `request_id` (str)    | A unique ID for the request (optional).                                                                          | No       |
+| `asynchronous` (bool) | If True, returns immediately after submitting the batch creation request, enabling asynchronous monitoring.     | No       |
 
-timeout (float | None) – The amount of time, in seconds, to wait for the request to complete. Note that if retry is specified, the timeout applies to each individual attempt.
+**Additional Parameters**
 
-metadata (Sequence[tuple[str, str]]) – Additional metadata that is provided to the method.
+Refer to the official documentation for details on parameters like `retry`, `timeout`, `metadata`, `gcp_conn_id`, `impersonation_chain`, `result_retry`, `deferrable`, and `polling_interval_seconds`.
 
-gcp_conn_id (str) – The connection ID to use connecting to Google Cloud.
+**Example Usage**
 
-impersonation_chain (str | Sequence[str] | None) – Optional service account to impersonate using short-term credentials, or chained list of accounts required to get the access_token of the last account in the list, which will be impersonated in the request. If set as a string, the account must grant the originating account the Service Account Token Creator IAM role. If set as a sequence, the identities from the list must grant Service Account Token Creator IAM role to the directly preceding identity, with first account from the list granting this role to the originating account (templated).
+```python
+from airflow import DAG
+from airflow.providers.google.cloud.operators.dataproc import DataprocCreateBatchOperator
 
-asynchronous (bool) – Flag to return after creating batch to the Dataproc API. This is useful for creating long-running batch and waiting on them asynchronously using the DataprocBatchSensor
+with DAG(...) as dag:
+    create_batch = DataprocCreateBatchOperator(
+        task_id='create_batch',
+        # ... (other parameters)
+    )
+```
 
-deferrable (bool) – Run operator in the deferrable mode.
+**Notes**
 
-polling_interval_seconds (int) – Time (seconds) to wait between calls to check the run status.
+* For in-depth usage and customization options, consult the [Apache Airflow documentation](https://airflow.apache.org/).
+```
+
+
