@@ -2,6 +2,13 @@ from airflow import DAG
 from airflow.providers.google.cloud.operators.dataproc import DataprocCreateBatchOperator
 from airflow.utils.dates import days_ago
 from datetime import datetime
+import string
+import random
+
+# Generate a random batch_id
+def generate_batch_id():
+    return ''.join(random.choices(string.ascii_lowercase + string.digits + '-', k=10))
+
 
 default_args = {
     'owner': 'Name',
@@ -26,6 +33,6 @@ create_batch = DataprocCreateBatchOperator(
             'main_python_file_uri': 'gs://bucket/hello_pyspark.py',  # GCS bucket
         },
     },
-    batch_id='tey47rvb', # change it in every run or auto-generated. This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
+    batch_id=generate_batch_id(), # change it in every run or auto-generated. This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
     dag=dag
 )
