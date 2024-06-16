@@ -34,7 +34,7 @@ create_batch = DataprocCreateBatchOperator(
         },
         
         'pyspark_batch': {
-            'main_python_file_uri': 'gs://airflow_dags_files/dataproc_serverless/dataproc_gcs_to_gbq.py',  # GCS bucket
+            'main_python_file_uri': 'gs://bucket_name/dataproc_gcs_to_gbq.py',  # GCS bucket path to the file
         },
     },
     batch_id=generate_batch_id(), # change it in every run or auto-generated. This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
