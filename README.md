@@ -69,6 +69,6 @@ with DAG(...) as dag:
 - For in-depth usage and customization options, consult the [Apache Airflow documentation](https://airflow.apache.org/).
 ```
 
-<br>
+airflow dependency 
 pip install apache-airflow-providers-google
 
