@@ -72,3 +72,6 @@ with DAG(...) as dag:
 airflow dependency 
 pip install apache-airflow-providers-google
 
+Google cloud Bigquery connector
+https://cloud.google.com/dataproc-serverless/docs/guides/bigquery-connector-spark-example
+https://github.com/GoogleCloudDataproc/spark-bigquery-connector/releases
